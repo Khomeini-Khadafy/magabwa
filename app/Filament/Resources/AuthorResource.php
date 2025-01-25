@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AuthorResource\Pages;
-use App\Filament\Resources\AuthorResource\RelationManagers;
 use App\Models\Author;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AuthorResource extends Resource
 {
@@ -24,14 +21,14 @@ class AuthorResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                ->required()
-                ->maxLength(255),
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('occupation')
-                ->required()
-                ->maxLength(255),
+                    ->required()
+                    ->maxLength(255),
                 forms\Components\FileUpload::make('avatar')
-                ->image()
-                ->required(),
+                    ->image()
+                    ->required(),
             ]);
     }
 
@@ -40,12 +37,13 @@ class AuthorResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->searchable()
-                ->sortable(),
+                    ->searchable()
+                    ->sortable(),
 
                 Tables\Columns\ImageColumn::make('avatar')
-                ->searchable()
-                ->sortable(),
+                    ->circular()
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
