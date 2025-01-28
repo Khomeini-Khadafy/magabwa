@@ -41,11 +41,13 @@
                 <span>Post Ads</span>
             </a>
         </div>
+
+        {{-- bagian navbar --}}
     </nav>
     <nav id="Category" class="max-w-[1130px] mx-auto flex justify-center items-center gap-4 mt-[30px]">
 
         @foreach ($categories as $category)
-            <a href="categoryPage.html"
+            <a href="{{ route('front.category', $category->slug) }}"
                 class="rounded-full p-[12px_22px] flex gap-[10px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18]">
                 <div class="w-6 h-6 flex shrink-0">
                     <img src="{{ Storage::url($category->icon) }}" alt="icon" />
@@ -53,8 +55,8 @@
                 <span>{{ $category->name }}</span>
             </a>
         @endforeach
-
     </nav>
+
     <section id="Featured" class="mt-[30px]">
         <div class="main-carousel w-full">
             <div class="featured-news-card relative w-full h-[550px] flex shrink-0 overflow-hidden">
@@ -148,60 +150,30 @@
                 UP TO DATE</p>
         </div>
         <div class="grid grid-cols-3 gap-[30px]">
-            <a href="details.html" class="card-news">
+            @forelse ($articles as $article)
+            <a href="{{ route('front.details', $article->slug) }}" class="card-news">
                 <div
                     class="rounded-[20px] ring-1 ring-[#EEF0F7] p-[26px_20px] flex flex-col gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
                     <div
                         class="thumbnail-container w-full h-[200px] rounded-[20px] flex shrink-0 overflow-hidden relative">
                         <p
                             class="badge-white absolute top-5 left-5 rounded-full p-[8px_18px] bg-white font-bold text-xs leading-[18px]">
-                            SPORT</p>
-                        <img src="assets/images/thumbnails/th-cyclist.png" class="object-cover w-full h-full"
+                            {{ $article->category->name }}</p>
+                        <img src="{{ Storage::url($article->thumbnail) }}" class="object-cover w-full h-full"
                             alt="thumbnail" />
                     </div>
                     <div class="card-info flex flex-col gap-[6px]">
-                        <h3 class="font-bold text-lg leading-[27px]">Bersepeda dapat membuat diri menjadi lebih baik
-                            lagi</h3>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
+                        <h3 class="font-bold text-lg leading-[27px]">
+                            {{ $article->name }}
+                        </h3>
+                        <p class="text-sm leading-[21px] text-[#A3A6AE]"> {{ $article->created_at->format('M d, Y') }}</p>
                     </div>
                 </div>
             </a>
-            <a href="details.html" class="card-news">
-                <div
-                    class="rounded-[20px] ring-1 ring-[#EEF0F7] p-[26px_20px] flex flex-col gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
-                    <div
-                        class="thumbnail-container w-full h-[200px] rounded-[20px] flex shrink-0 overflow-hidden relative">
-                        <p
-                            class="badge-white absolute top-5 left-5 rounded-full p-[8px_18px] bg-white font-bold text-xs leading-[18px]">
-                            ENTERTAINMENT</p>
-                        <img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
-                            alt="thumbnail" />
-                    </div>
-                    <div class="card-info flex flex-col gap-[6px]">
-                        <h3 class="font-bold text-lg leading-[27px]">Beberapa artis ini merayakan ultah di tengah hutan
-                            raya</h3>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                    </div>
-                </div>
-            </a>
-            <a href="details.html" class="card-news">
-                <div
-                    class="rounded-[20px] ring-1 ring-[#EEF0F7] p-[26px_20px] flex flex-col gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
-                    <div
-                        class="thumbnail-container w-full h-[200px] rounded-[20px] flex shrink-0 overflow-hidden relative">
-                        <p
-                            class="badge-white absolute top-5 left-5 rounded-full p-[8px_18px] bg-white font-bold text-xs leading-[18px]">
-                            POLITIC</p>
-                        <img src="assets/images/thumbnails/th-demonstration.png" class="object-cover w-full h-full"
-                            alt="thumbnail" />
-                    </div>
-                    <div class="card-info flex flex-col gap-[6px]">
-                        <h3 class="font-bold text-lg leading-[27px]">Terjadi demo pada ibu kota jakarta membuat macet
-                            parah</h3>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                    </div>
-                </div>
-            </a>
+            @empty
+                <p>Belum ada data Terbaru</p>
+            @endforelse
+            
         </div>
     </section>
     <section id="Best-authors" class="max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-[70px]">
