@@ -186,86 +186,27 @@
                 Written by People
             </h2>
         </div>
+        {{-- bagian author --}}
         <div class="grid grid-cols-6 gap-[30px]">
-            <a href="author.html" class="card-authors">
+            @forelse ($authors as $author)
+            <a href="{{ route('front.author', $author->slug) }}" class="card-authors">
                 <div
                     class="rounded-[20px] border border-[#EEF0F7] p-[26px_20px] flex flex-col items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
                     <div class="w-[70px] h-[70px] flex shrink-0 rounded-full overflow-hidden">
-                        <img src="assets/images/photos/photo.png" class="object-cover w-full h-full"
+                        <img src="{{ Storage::url($author->avatar) }}" class="object-cover w-full h-full"
                             alt="avatar" />
                     </div>
                     <div class="flex flex-col gap-1 text-center">
-                        <p class="font-semibold">Junior Parrito</p>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">3,492 News</p>
+                        <p class="font-semibold">{{ $author->name }}</p>
+                        <p class="text-sm leading-[21px] text-[#A3A6AE]">{{ $author->news->count() }}</p>
                     </div>
                 </div>
             </a>
-            <a href="author.html" class="card-authors">
-                <div
-                    class="rounded-[20px] border border-[#EEF0F7] p-[26px_20px] flex flex-col items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                    <div class="w-[70px] h-[70px] flex shrink-0 rounded-full overflow-hidden">
-                        <img src="assets/images/photos/photo1.png" class="object-cover w-full h-full"
-                            alt="avatar" />
-                    </div>
-                    <div class="flex flex-col gap-1 text-center">
-                        <p class="font-semibold">Sabrina Juli</p>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">312 News</p>
-                    </div>
-                </div>
-            </a>
-            <a href="author.html" class="card-authors">
-                <div
-                    class="rounded-[20px] border border-[#EEF0F7] p-[26px_20px] flex flex-col items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                    <div class="w-[70px] h-[70px] flex shrink-0 rounded-full overflow-hidden">
-                        <img src="assets/images/photos/photo2.png" class="object-cover w-full h-full"
-                            alt="avatar" />
-                    </div>
-                    <div class="flex flex-col gap-1 text-center">
-                        <p class="font-semibold">Ijan Malawi</p>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">44 News</p>
-                    </div>
-                </div>
-            </a>
-            <a href="author.html" class="card-authors">
-                <div
-                    class="rounded-[20px] border border-[#EEF0F7] p-[26px_20px] flex flex-col items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                    <div class="w-[70px] h-[70px] flex shrink-0 rounded-full overflow-hidden">
-                        <img src="assets/images/photos/photo3.png" class="object-cover w-full h-full"
-                            alt="avatar" />
-                    </div>
-                    <div class="flex flex-col gap-1 text-center">
-                        <p class="font-semibold">Rita Putria</p>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">15,398 News</p>
-                    </div>
-                </div>
-            </a>
-            <a href="author.html" class="card-authors">
-                <div
-                    class="rounded-[20px] border border-[#EEF0F7] p-[26px_20px] flex flex-col items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                    <div class="w-[70px] h-[70px] flex shrink-0 rounded-full overflow-hidden">
-                        <img src="assets/images/photos/photo4.png" class="object-cover w-full h-full"
-                            alt="avatar" />
-                    </div>
-                    <div class="flex flex-col gap-1 text-center">
-                        <p class="font-semibold">Shayna Xin</p>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">3,492 News</p>
-                    </div>
-                </div>
-            </a>
-            <a href="author.html" class="card-authors">
-                <div
-                    class="rounded-[20px] border border-[#EEF0F7] p-[26px_20px] flex flex-col items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                    <div class="w-[70px] h-[70px] flex shrink-0 rounded-full overflow-hidden">
-                        <img src="assets/images/photos/photo5.png" class="object-cover w-full h-full"
-                            alt="avatar" />
-                    </div>
-                    <div class="flex flex-col gap-1 text-center">
-                        <p class="font-semibold">Dhi Pakao</p>
-                        <p class="text-sm leading-[21px] text-[#A3A6AE]">223 News</p>
-                    </div>
-                </div>
-            </a>
+            @empty
+                <p>Belum Ada Data</p>
+            @endforelse
         </div>
+        {{-- end author --}}
     </section>
     <section id="Advertisement" class="max-w-[1130px] mx-auto flex justify-center mt-[70px]">
         <div class="flex flex-col gap-3 shrink-0 w-fit">
