@@ -204,7 +204,7 @@
                 <div class="card-detail w-full flex items-end p-[30px] relative z-20">
                     <div class="flex flex-col gap-[10px]">
                         <p class="text-white">Featured</p>
-                        <a href="details.html"
+                        <a href="{{ route('front.details', $entertaiment_articles_featured->slug) }}"
                             class="font-bold text-[30px] leading-[36px] text-white hover:underline transition-all duration-300">
                             {{ substr($entertaiment_articles_featured->name, 0, 50) }} 
                             {{ strLen($entertaiment_articles_featured->name) > 50 ? '...' : '' }}
@@ -219,7 +219,7 @@
                 <div class="w-[455px] flex flex-col gap-5 shrink-0">
 
                     @forelse ($entertaiment_articles as $article)
-                        <a href="details.html" class="card py-[2px]">
+                        <a href="{{ route('front.details', $article->slug) }}" class="card py-[2px]">
                             <div
                                 class="rounded-[20px] border border-[#EEF0F7] p-[14px] flex items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
                                 <div class="w-[130px] h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
@@ -367,7 +367,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="Latest-automotive" class="max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-[70px]">
         <div class="flex justify-between items-center">
             <h2 class="font-bold text-[26px] leading-[39px]">
