@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\FrontController;
@@ -14,19 +13,20 @@ class FrontController extends Controller
     {
         $categories = Category::all();
 
-        // menampilkan article berdasarkan [not_featured]
+        // menampilkan article berdasarkan [not_featured] ->all Post
         $articles = ArticleNews::with(['category'])
             ->where('is_featured', 'not_featured')
             ->latest()
             ->take(6)
             ->get();
 
-        // menampilkan article berdasarkan [featured]
+        // menampilkan article berdasarkan [featured] -> carausel
         $featured_articles = ArticleNews::with(['category'])
             ->where('is_featured', 'featured')
             ->inRandomOrder()
             ->take(3)
             ->get();
+        // End menampilkan article berdasarkan [not_featured & Featured] -> carausel & not carausel
 
         $authors = Author::all();
 
@@ -37,7 +37,7 @@ class FrontController extends Controller
         // ->take()
             ->first();
 
-        // buat variabel baru lalu ambil modelnya ArticleNews| whereHas(dimana) masuk ke relasi category pada model articleNews
+        // ini article untuk Entertaiment per category
         $entertaiment_articles = ArticleNews::whereHas('category', function ($query) {
             $query->where('name', 'Entertaiment');
         })
@@ -52,15 +52,38 @@ class FrontController extends Controller
             ->where('is_featured', 'featured')
             ->inRandomOrder()
             ->first();
+        // End ini article untuk Entertaiment per category
+
+        // ini article untuk business per category
+        $sport_articles = ArticleNews::whereHas('category', function ($query) {
+            $query->where('name', 'Sport');
+        })
+            ->where('is_featured', 'not_featured')
+            ->latest()
+            ->take(6)
+            ->get();
+
+        $sport_articles_featured = ArticleNews::whereHas('category', function ($query) {
+            $query->where('name', 'Sport');
+        })
+            ->where('is_featured', 'featured')
+            ->inRandomOrder()
+            ->first();
+        // End ini article untuk business per category
 
         return view('front.index',
             compact(
+                'sport_articles',
+                'sport_articles_featured',
+
                 'entertaiment_articles_featured',
                 'entertaiment_articles',
-                'categories',
+
                 'articles',
-                'authors',
                 'featured_articles',
+
+                'categories',
+                'authors',
                 'bannerads'
             ));
     }
