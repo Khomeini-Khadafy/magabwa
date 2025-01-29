@@ -1,52 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="{{ asset('output.css') }}" rel="stylesheet" />
-    <link href="{{ asset('main.css') }}" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
-</head>
+<x-header />
 
 <body class="font-[Poppins] pb-[72px]">
-    <nav id="Navbar" class="max-w-[1130px] mx-auto flex justify-between items-center mt-[30px]">
-        <div class="logo-container flex gap-[30px] items-center">
-            <a href="index.html" class="flex shrink-0">
-                <img src="assets/images/logos/logo.svg" alt="logo" />
-            </a>
-            <div class="h-12 border border-[#E8EBF4]"></div>
-            <form action="searchPage.html"
-                class="w-[450px] flex items-center rounded-full border border-[#E8EBF4] p-[12px_20px] gap-[10px] focus-within:ring-2 focus-within:ring-[#FF6B18] transition-all duration-300">
-                <button type="submit" class="w-5 h-5 flex shrink-0">
-                    <img src="assets/images/icons/search-normal.svg" alt="icon" />
-                </button>
-                <input type="text" name="" id=""
-                    class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#A3A6AE]"
-                    placeholder="Search hot trendy news today..." />
-            </form>
-        </div>
-        <div class="flex items-center gap-3">
-            <a href=""
-                class="rounded-full p-[12px_22px] flex gap-[10px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18]">
-                Upgrade Pro
-            </a>
-            <a href=""
-                class="rounded-full p-[12px_22px] flex gap-[10px] font-bold transition-all duration-300 bg-[#FF6B18] text-white hover:shadow-[0_10px_20px_0_#FF6B1880]">
-                <div class="w-6 h-6 flex shrink-0">
-                    <img src="assets/images/icons/favorite-chart.svg" alt="icon" />
-                </div>
-                <span>Post Ads</span>
-            </a>
-        </div>
+    
+    <x-navbar />
 
-        {{-- bagian navbar --}}
-    </nav>
     <nav id="Category" class="max-w-[1130px] mx-auto flex justify-center items-center gap-4 mt-[30px]">
-
         @foreach ($categories as $category)
             <a href="{{ route('front.category', $category->slug) }}"
                 class="rounded-full p-[12px_22px] flex gap-[10px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18]">
@@ -138,7 +99,7 @@
         </div>
         {{-- end article Not_featured --}}
     </section>
-     {{-- End Up to date Article --}}
+    {{-- End Up to date Article --}}
 
     {{-- Author --}}
     <section id="Best-authors" class="max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-[70px]">
@@ -281,7 +242,8 @@
                         <a href="details.html"
                             class="font-bold text-[30px] leading-[36px] text-white hover:underline transition-all duration-300">
                             {{ substr($sport_articles_featured->name, 0, 50) }}
-                            {{ strLen($sport_articles_featured->name) > 50 ? '...' : '' }} //untuk mempersingkat tulisan article
+                            {{ strLen($sport_articles_featured->name) > 50 ? '...' : '' }} //untuk mempersingkat
+                            tulisan article
                         </a>
                         <p class="text-white">
                             {{ $article->created_at->format('M d, Y') }}
@@ -443,12 +405,7 @@
         </div>
     </section> --}}
 
-    <script src="{{ asset('customjs/two-lines-text.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- JavaScript -->
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script src="{{ asset('customjs/carousel.js') }}"></script>
+    <x-javascript />
 </body>
 
 </html>
