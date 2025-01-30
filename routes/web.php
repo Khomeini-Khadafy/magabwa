@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -20,4 +22,4 @@ Route::get('/category/{category:slug}', [CategoryController::class, 'category'])
 
 Route::get('/author/{author:slug}', [AuthorController::class, 'author'])->name('front.author');
 
-Route::get('/search/{search:slug}', [FrontController::class, 'search'])->name('front.search');
+Route::get('/search', [SearchController::class, 'search'])->name('front.search');
