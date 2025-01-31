@@ -75,3 +75,6 @@
     {{-- End BannerAds --}}
 </body>
 @endsection
+@push('after-script')
+    <script src="https://cdn.tailwindcss.com"></script>
+@endpush
