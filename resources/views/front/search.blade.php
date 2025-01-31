@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html>
 
-<x-header />
-
+@extends('front.master')
+@section('content')
 <body class="font-[Poppins]">
     <x-navbar />
 
@@ -67,5 +65,4 @@
         </div>
     </section>
 </body>
-
-</html>
+@endsection
