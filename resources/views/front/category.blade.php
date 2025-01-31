@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<x-header />
-
+@extends('front.master')
+@section('content')
 <body class="font-[Poppins] pb-[83px]">
 
     <x-navbar />
@@ -71,3 +68,7 @@
     </section>
     {{-- End BannerAds --}}
 </body>
+@endsection
+@push('after-script')
+    <script src="https://cdn.tailwindcss.com"></script>
+@endpush
