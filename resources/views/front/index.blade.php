@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
+@extends('front.master')
 
-<x-header />
-
+@section('content')
 <body class="font-[Poppins] pb-[72px]">
-    
+
     <x-navbar />
 
     <nav id="Category" class="max-w-[1130px] mx-auto flex justify-center items-center gap-4 mt-[30px]">
@@ -242,8 +240,7 @@
                         <a href="details.html"
                             class="font-bold text-[30px] leading-[36px] text-white hover:underline transition-all duration-300">
                             {{ substr($sport_articles_featured->name, 0, 50) }}
-                            {{ strLen($sport_articles_featured->name) > 50 ? '...' : '' }} //untuk mempersingkat
-                            tulisan article
+                            {{ strLen($sport_articles_featured->name) > 50 ? '...' : '' }}
                         </a>
                         <p class="text-white">
                             {{ $article->created_at->format('M d, Y') }}
@@ -285,127 +282,18 @@
     </section>
     {{-- End Sport --}}
 
-    {{-- <section id="Latest-automotive" class="max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-[70px]">
-        <div class="flex justify-between items-center">
-            <h2 class="font-bold text-[26px] leading-[39px]">
-                Latest For You <br />
-                in Automotive
-            </h2>
-            <a href="categoryPage.html"
-                class="rounded-full p-[12px_22px] flex gap-[10px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18]">Explore
-                All</a>
-        </div>
-        <div class="flex justify-between items-center h-fit">
-            <div class="featured-news-card relative w-full h-[424px] flex flex-1 rounded-[20px] overflow-hidden">
-                <img src="assets/images/thumbnails/th-bulldozer.png"
-                    class="thumbnail absolute w-full h-full object-cover" alt="icon" />
-                <div class="w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)] absolute z-10">
-                </div>
-                <div class="card-detail w-full flex items-end p-[30px] relative z-20">
-                    <div class="flex flex-col gap-[10px]">
-                        <p class="text-white">Featured</p>
-                        <a href="details.html"
-                            class="font-bold text-[30px] leading-[36px] text-white hover:underline transition-all duration-300">Rela
-                            Tampil Menarik Depan Wanita, Pria Ini Jadi Bahan Bicaraan</a>
-                        <p class="text-white">12 Jun, 2024</p>
-                    </div>
-                </div>
-            </div>
-            <div class="h-[424px] w-fit px-5 overflow-y-scroll overflow-x-hidden relative custom-scrollbar">
-                <div class="w-[455px] flex flex-col gap-5 shrink-0">
-                    <a href="details.html" class="card py-[2px]">
-                        <div
-                            class="rounded-[20px] border border-[#EEF0F7] p-[14px] flex items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                            <div class="w-[130px] h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
-                                <img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
-                                    alt="thumbnail" />
-                            </div>
-                            <div class="flex flex-col justify-center-center gap-[6px]">
-                                <h3 class="font-bold text-lg leading-[27px]">Tersedia lebih dari 10,000 charger di area
-                                    kota Bandung</h3>
-                                <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="details.html" class="card py-[2px]">
-                        <div
-                            class="rounded-[20px] border border-[#EEF0F7] p-[14px] flex items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                            <div class="w-[130px] h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
-                                <img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
-                                    alt="thumbnail" />
-                            </div>
-                            <div class="flex flex-col justify-center-center gap-[6px]">
-                                <h3 class="font-bold text-lg leading-[27px]">Porscha merilis mesin baru bertenaga 5,000
-                                    power</h3>
-                                <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="details.html" class="card py-[2px]">
-                        <div
-                            class="rounded-[20px] border border-[#EEF0F7] p-[14px] flex items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                            <div class="w-[130px] h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
-                                <img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
-                                    alt="thumbnail" />
-                            </div>
-                            <div class="flex flex-col justify-center-center gap-[6px]">
-                                <h3 class="font-bold text-lg leading-[27px]">Tesla memperbarui teknologi self driving
-                                    lebih akurat</h3>
-                                <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="details.html" class="card py-[2px]">
-                        <div
-                            class="rounded-[20px] border border-[#EEF0F7] p-[14px] flex items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                            <div class="w-[130px] h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
-                                <img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
-                                    alt="thumbnail" />
-                            </div>
-                            <div class="flex flex-col justify-center-center gap-[6px]">
-                                <h3 class="font-bold text-lg leading-[27px]">Bikin house party tanpa biaya mahal,
-                                    begini tipsnya!</h3>
-                                <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="details.html" class="card py-[2px]">
-                        <div
-                            class="rounded-[20px] border border-[#EEF0F7] p-[14px] flex items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                            <div class="w-[130px] h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
-                                <img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
-                                    alt="thumbnail" />
-                            </div>
-                            <div class="flex flex-col justify-center-center gap-[6px]">
-                                <h3 class="font-bold text-lg leading-[27px]">Bikin house party tanpa biaya mahal,
-                                    begini tipsnya!</h3>
-                                <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="details.html" class="card py-[2px]">
-                        <div
-                            class="rounded-[20px] border border-[#EEF0F7] p-[14px] flex items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300">
-                            <div class="w-[130px] h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
-                                <img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
-                                    alt="thumbnail" />
-                            </div>
-                            <div class="flex flex-col justify-center-center gap-[6px]">
-                                <h3 class="font-bold text-lg leading-[27px]">Bikin house party tanpa biaya mahal,
-                                    begini tipsnya!</h3>
-                                <p class="text-sm leading-[21px] text-[#A3A6AE]">12 Jun, 2024</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div
-                    class="sticky z-10 bottom-0 w-full h-[100px] bg-gradient-to-b from-[rgba(255,255,255,0.19)] to-[rgba(255,255,255,1)]">
-                </div>
-            </div>
-        </div>
-    </section> --}}
+</body 
+@endsection 
+s
+@push('after-styles') 
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
+@endpush
 
-    <x-javascript />
-</body>
-
-</html>
+@push('after-script')
+    <script src="{{ asset('customjs/two-lines-text.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="{{ asset('customjs/carousel.js') }}"></script>
+@endpush
